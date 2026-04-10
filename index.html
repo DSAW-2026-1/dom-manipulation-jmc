@@ -7,37 +7,41 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="contenedor">
-    <header class="encabezado">
-      <h1>Lista de Tareas</h1>
-      <p>Agrega, completa y elimina tus tareas fácilmente.</p>
-    </header>
+  <main class="app">
+    <section class="card">
+      <header class="header">
+        <div>
+          <p class="tag">Organiza tu día</p>
+          <h1>Lista de Tareas</h1>
+          <p class="subtitle">Agrega, completa y elimina tareas fácilmente.</p>
+        </div>
+      </header>
 
-    <section class="formulario-seccion" aria-labelledby="titulo-formulario">
-      <h2 id="titulo-formulario">Agregar nueva tarea</h2>
-      <form id="taskForm" class="formulario">
-        <label for="taskInput">Escribe una tarea</label>
-        <div class="grupo-input">
+      <section class="form-section" aria-labelledby="titulo-formulario">
+        <h2 id="titulo-formulario">Nueva tarea</h2>
+
+        <form id="taskForm" class="task-form">
+          <label for="taskInput" class="sr-only">Escribe una tarea</label>
           <input
             type="text"
             id="taskInput"
-            placeholder="Ejemplo: Hacer la tarea de HTML"
+            placeholder="Ejemplo: Terminar la actividad de HTML"
             required
           />
           <button type="submit">Agregar</button>
-        </div>
-      </form>
-    </section>
+        </form>
+      </section>
 
-    <section class="lista-seccion" aria-labelledby="titulo-lista">
-      <h2 id="titulo-lista">Mis tareas</h2>
-      <p id="emptyMessage" class="mensaje-vacio">No hay tareas por ahora.</p>
-      <ul id="taskList" class="lista-tareas"></ul>
-    </section>
+      <section class="info-bar">
+        <p id="taskCounter">Tareas totales: 0</p>
+      </section>
 
-    <footer class="pie">
-      <p>Aplicación desarrollada con HTML, CSS y JavaScript.</p>
-    </footer>
+      <section class="list-section" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Mis tareas</h2>
+        <p id="emptyMessage" class="empty-message">Aún no tienes tareas registradas.</p>
+        <ul id="taskList" class="task-list"></ul>
+      </section>
+    </section>
   </main>
 
   <script src="script.js"></script>
