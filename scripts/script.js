@@ -2,6 +2,7 @@ const taskForm = document.getElementById("taskForm");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 const emptyMessage = document.getElementById("emptyMessage");
+const taskCounter = document.getElementById("taskCounter");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -13,15 +14,20 @@ function updateEmptyMessage() {
   emptyMessage.style.display = tasks.length === 0 ? "block" : "none";
 }
 
+function updateCounter() {
+  const completedTasks = tasks.filter(task => task.completed).length;
+  taskCounter.textContent = `Tareas totales: ${tasks.length} | Completadas: ${completedTasks}`;
+}
+
 function renderTasks() {
   taskList.innerHTML = "";
 
   tasks.forEach((task, index) => {
     const li = document.createElement("li");
-    li.classList.add("tarea");
+    li.classList.add("task-item");
 
-    const infoTarea = document.createElement("div");
-    infoTarea.classList.add("info-tarea");
+    const taskLeft = document.createElement("div");
+    taskLeft.classList.add("task-left");
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -35,16 +41,16 @@ function renderTasks() {
     });
 
     const span = document.createElement("span");
-    span.classList.add("texto-tarea");
+    span.classList.add("task-text");
     span.textContent = task.text;
 
     if (task.completed) {
-      span.classList.add("completada");
+      span.classList.add("completed");
     }
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Eliminar";
-    deleteBtn.classList.add("btn-eliminar");
+    deleteBtn.classList.add("delete-btn");
     deleteBtn.setAttribute("aria-label", "Eliminar tarea");
 
     deleteBtn.addEventListener("click", () => {
@@ -53,24 +59,27 @@ function renderTasks() {
       renderTasks();
     });
 
-    infoTarea.appendChild(checkbox);
-    infoTarea.appendChild(span);
+    taskLeft.appendChild(checkbox);
+    taskLeft.appendChild(span);
 
-    li.appendChild(infoTarea);
+    li.appendChild(taskLeft);
     li.appendChild(deleteBtn);
 
     taskList.appendChild(li);
   });
 
   updateEmptyMessage();
+  updateCounter();
 }
 
-taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+taskForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
   const newTask = taskInput.value.trim();
 
-  if (newTask === "") return;
+  if (newTask === "") {
+    return;
+  }
 
   tasks.push({
     text: newTask,
