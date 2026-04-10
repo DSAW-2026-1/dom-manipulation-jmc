@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Mi TODO list</h1>
-    <script src="scripts/script.js"></script>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Tareas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="contenedor">
+    <header class="encabezado">
+      <h1>Lista de Tareas</h1>
+      <p>Agrega, completa y elimina tus tareas fácilmente.</p>
+    </header>
+
+    <section class="formulario-seccion" aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Agregar nueva tarea</h2>
+      <form id="taskForm" class="formulario">
+        <label for="taskInput">Escribe una tarea</label>
+        <div class="grupo-input">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Ejemplo: Hacer la tarea de HTML"
+            required
+          />
+          <button type="submit">Agregar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="lista-seccion" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Mis tareas</h2>
+      <p id="emptyMessage" class="mensaje-vacio">No hay tareas por ahora.</p>
+      <ul id="taskList" class="lista-tareas"></ul>
+    </section>
+
+    <footer class="pie">
+      <p>Aplicación desarrollada con HTML, CSS y JavaScript.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
