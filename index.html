@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Mi TODO list</h1>
-    <script src="scripts/script.js"></script>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Tareas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card">
+      <header class="header">
+        <div>
+          <p class="tag">Organiza tu día</p>
+          <h1>Lista de Tareas</h1>
+          <p class="subtitle">Agrega, completa y elimina tareas fácilmente.</p>
+        </div>
+      </header>
+
+      <section class="form-section" aria-labelledby="titulo-formulario">
+        <h2 id="titulo-formulario">Nueva tarea</h2>
+
+        <form id="taskForm" class="task-form">
+          <label for="taskInput" class="sr-only">Escribe una tarea</label>
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Ejemplo: Terminar la actividad de HTML"
+            required
+          />
+          <button type="submit">Agregar</button>
+        </form>
+      </section>
+
+      <section class="info-bar">
+        <p id="taskCounter">Tareas totales: 0</p>
+      </section>
+
+      <section class="list-section" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Mis tareas</h2>
+        <p id="emptyMessage" class="empty-message">Aún no tienes tareas registradas.</p>
+        <ul id="taskList" class="task-list"></ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
